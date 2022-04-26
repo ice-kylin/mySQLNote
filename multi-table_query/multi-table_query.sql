@@ -2,7 +2,8 @@
 # 多表查询
  */
 
-USE atguigudb;
+USE
+atguigudb;
 
 DESC employees;
 DESC departments;
@@ -65,7 +66,11 @@ SELECT
     WHERE
         emp.department_id = dept.department_id;
 
-# 查询员工的 `employee_id`、`last_name`、`department_name`、`city`
+#
+查询员工的 `employee_id`
+、`last_name`
+、`department_name`
+、`city`
 SELECT
     e.employee_id,
     e.last_name,

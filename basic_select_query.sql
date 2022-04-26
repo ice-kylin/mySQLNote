@@ -37,8 +37,10 @@
 2. 图形化界面工具
  */
 
-USE atguigudb;
-SHOW TABLES;
+USE
+atguigudb;
+SHOW
+TABLES;
 SELECT *
     FROM
         employees;
@@ -75,10 +77,10 @@ SELECT
   - 使用一对 `"` 引起来，不要使用 `'`
  */
 SELECT
-    employee_id AS emp_id,
-    last_name   AS l_name,
-    department_id  "部门 id",
-    salary * 12    "annual sal"
+    employee_id   AS emp_id,
+    last_name     AS l_name,
+    department_id AS "部门 id",
+    salary * 12   AS "annual sal"
     FROM
         employees;
 
@@ -90,7 +92,9 @@ SELECT DISTINCT
     FROM
         employees;
 
-# 没有报错，没有实际意义
+#
+没有报错
+，没有实际意义
 SELECT DISTINCT
     department_id,
     salary
@@ -105,8 +109,8 @@ SELECT DISTINCT
  */
 SELECT
     employee_id,
-    salary                                        "月工资",
-    salary * (1 + IFNULL(commission_pct, 0)) * 12 "年工资",
+    salary                                        AS "月工资",
+    salary * (1 + ifnull(commission_pct, 0)) * 12 AS "年工资",
     commission_pct
     FROM
         employees;
@@ -131,7 +135,9 @@ SELECT
 /*
 # 显示表结构
  */
-DESCRIBE employees; # 显示了表中字段的详细信息
+DESCRIBE employees;
+#
+显示了表中字段的详细信息
 DESC employees;
 DESC departments;
 
@@ -148,22 +154,26 @@ SELECT *
 ## 基本 SELECT 查询练习
  */
 
-# 1. 查询员工 12 个月的工资总和，并起名为 "annual salary"
+#
+1. 查询员工 12 个月的工资总和
+，并起名为 "annual salary"
 SELECT
-    employee_id                                   "员工 id",
-    last_name                                     "姓",
-    first_name                                    "名",
-    salary * (1 + IFNULL(commission_pct, 0)) * 12 "annual salary"
+    employee_id                                   AS "员工 id",
+    last_name                                     AS "姓",
+    first_name                                    AS "名",
+    salary * (1 + ifnull(commission_pct, 0)) * 12 AS "annual salary"
     FROM
         employees;
 
-# 2. 查询 `employees` 表中去除重复的 job_id 以后的数据
+#
+2. 查询 `employees` 表中去除重复的 job_id 以后的数据
 SELECT DISTINCT
     job_id
     FROM
         employees;
 
-# 3. 查询工资大于 `12000` 的员工姓名和工资
+#
+3. 查询工资大于 `12000` 的员工姓名和工资
 SELECT
     last_name,
     first_name,
@@ -173,7 +183,8 @@ SELECT
     WHERE
         salary > 12000;
 
-# 4. 查询员工号为 176 的员工的姓名和部门号
+#
+4. 查询员工号为 176 的员工的姓名和部门号
 SELECT
     last_name,
     first_name,
@@ -183,7 +194,9 @@ SELECT
     WHERE
         employee_id = 176;
 
-# 5. 显示表 `departments` 的结构，并查询其中的全部数据
+#
+5. 显示表 `departments` 的结构
+，并查询其中的全部数据
 DESCRIBE departments;
 
 SELECT *

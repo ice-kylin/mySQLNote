@@ -12,12 +12,12 @@ CREATE TABLE `t_emp`
 (
     `id`     int(11) NOT NULL AUTO_INCREMENT,
     `name`   varchar(20) DEFAULT NULL,
-    `age`    int(3)      DEFAULT NULL,
-    `deptid` int(11)     DEFAULT NULL,
-    empno    int     NOT NULL,
+    `age`    int(3) DEFAULT NULL,
+    `deptid` int(11) DEFAULT NULL,
+    empno    int NOT NULL,
     PRIMARY KEY (`id`),
-    KEY `idx_dept_id` (`deptid`)
-#CONSTRAINT `fk_dept_id` FOREIGN KEY (`deptId`) REFERENCES `t_dept` (`id`)
+    key      `idx_dept_id` (`deptid`)
+        #CONSTRAINT `fk_dept_id` FOREIGN KEY (`deptId`) REFERENCES `t_dept` (`id`)
 ) ENGINE = INNODB
   AUTO_INCREMENT = 1
   DEFAULT CHARSET = utf8;
@@ -87,7 +87,11 @@ INSERT INTO
     VALUES
         ('韦小宝', 18, NULL, 100010);
 
-# 1. 所有有门派的人员信息（A、B 两表共有）
+#
+1. 所有有门派的人员信息
+（A
+、B 两表共有
+）
 SELECT
     e.id,
     e.name,
@@ -98,7 +102,11 @@ SELECT
         t_emp e
             JOIN t_dept d ON e.deptid = d.id;
 
-# 2. 列出所有用户，并显示其机构信息（A 的全集）
+#
+2. 列出所有用户
+，并显示其机构信息
+（A 的全集
+）
 SELECT
     e.id,
     e.name,
@@ -109,7 +117,10 @@ SELECT
         t_emp e
             LEFT JOIN t_dept d ON e.deptid = d.id;
 
-# 3. 列出所有门派（B 的全集）
+#
+3. 列出所有门派
+（B 的全集
+）
 SELECT
     d.id,
     d.deptname,
@@ -120,7 +131,10 @@ SELECT
         t_dept d
             LEFT JOIN t_emp e ON d.id = e.deptid;
 
-# 4. 所有不入门派的人员（A 的独有）
+#
+4. 所有不入门派的人员
+（A 的独有
+）
 SELECT
     e.id,
     e.name,
@@ -132,7 +146,10 @@ SELECT
     WHERE
         d.id IS NULL;
 
-# 5. 所有没人入的门派（B 的独有）
+#
+5. 所有没人入的门派
+（B 的独有
+）
 SELECT *
     FROM
         t_dept b
@@ -147,7 +164,10 @@ SELECT *
     WHERE
         a.deptid IS NULL;
 
-# 6. 列出所有人员和机构的对照关系（AB 全有）
+#
+6. 列出所有人员和机构的对照关系
+（AB 全有
+）
 SELECT *
     FROM
         t_emp a
@@ -160,7 +180,10 @@ SELECT *
     WHERE
         a.deptid IS NULL;
 
-# 7. 列出所有没入派的人员和没人入的门派（A 的独有 + B 的独有）
+#
+7. 列出所有没入派的人员和没人入的门派
+（A 的独有 + B 的独有
+）
 SELECT *
     FROM
         t_emp e

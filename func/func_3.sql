@@ -1,32 +1,35 @@
 /*
 # 流程控制函数
  */
-# IF()
+#
+IF()
 USE atguigudb;
 
 SELECT
     last_name,
     salary,
-    IF(salary >= 6000, '高工资', '低工资') "details"
+    if(salary >= 6000, '高工资', '低工资') AS "details"
     FROM
         employees;
 
 SELECT
     last_name,
     commission_pct,
-    IF(commission_pct IS NULL, 0, commission_pct) "details"
+    if(commission_pct IS NULL, 0, commission_pct) AS "details"
     FROM
         employees;
 
-# IFNULL()
+#
+IFNULL()
 SELECT
     last_name,
     commission_pct,
-    IFNULL(commission_pct, 0) "details"
+    ifnull(commission_pct, 0) AS "details"
     FROM
         employees;
 
-# CASE WHEN ... THEN ... WHEN ... THEN ... ELSE ... END
+#
+CASE WHEN ... THEN ... WHEN ... THEN ... ELSE ... END
 SELECT
     last_name,
     salary,
@@ -34,7 +37,7 @@ SELECT
         WHEN salary >= 15000 THEN '白骨精'
         WHEN salary >= 10000 THEN '潜力股'
         WHEN salary >= 8000 THEN '小屌丝'
-        ELSE '草根' END "details"
+        ELSE '草根' END AS "details"
     FROM
         employees;
 
@@ -53,7 +56,7 @@ SELECT
         WHEN department_id = 10 THEN salary * 1.1
         WHEN department_id = 20 THEN salary * 1.2
         WHEN department_id = 30 THEN salary * 1.3
-        ELSE salary * 1.4 END "details"
+        ELSE salary * 1.4 END AS "details"
     FROM
         employees;
 
@@ -65,7 +68,7 @@ SELECT
         WHEN 10 THEN salary * 1.1
         WHEN 20 THEN salary * 1.2
         WHEN 30 THEN salary * 1.3
-        ELSE salary * 1.4 END "details"
+        ELSE salary * 1.4 END AS "details"
     FROM
         employees;
 
@@ -82,7 +85,7 @@ SELECT
     CASE
         WHEN department_id = 10 THEN salary * 1.1
         WHEN department_id = 20 THEN salary * 1.2
-        WHEN department_id = 30 THEN salary * 1.3 END "details"
+        WHEN department_id = 30 THEN salary * 1.3 END AS "details"
     FROM
         employees
     WHERE
@@ -95,7 +98,7 @@ SELECT
     CASE department_id
         WHEN 10 THEN salary * 1.1
         WHEN 20 THEN salary * 1.2
-        WHEN 30 THEN salary * 1.3 END "details"
+        WHEN 30 THEN salary * 1.3 END AS "details"
     FROM
         employees
     WHERE

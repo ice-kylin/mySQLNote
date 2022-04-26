@@ -4,7 +4,8 @@
 - 使用 `LIMIT` 实现数据的分页显示
  */
 
-USE atguigudb;
+USE
+atguigudb;
 
 SELECT
     employee_id,
@@ -12,29 +13,32 @@ SELECT
     FROM
         employees;
 
-# 每页显示 20 条记录，此时显示第 1 页的数据
+#
+每页显示 20 条记录
+，此时显示第 1 页的数据
 SELECT
     employee_id,
     last_name
     FROM
-        employees
-    LIMIT 0,20;
+        employees limit 0,20;
 
-# 每页显示 20 条记录，此时显示第 2 页的数据
+#
+每页显示 20 条记录
+，此时显示第 2 页的数据
 SELECT
     employee_id,
     last_name
     FROM
-        employees
-    LIMIT 20,20;
+        employees limit 20,20;
 
-# 每页显示 20 条记录，此时显示第 3 页的数据
+#
+每页显示 20 条记录
+，此时显示第 3 页的数据
 SELECT
     employee_id,
     last_name
     FROM
-        employees
-    LIMIT 40,20;
+        employees limit 40,20;
 
 /*
 ## 公式
@@ -57,16 +61,15 @@ SELECT
     WHERE
         salary > 6000
     ORDER BY
-        salary DESC
-    LIMIT 0,20;
+        salary DESC LIMIT 0,20;
 
-# 只显示第 `32` 和 `33` 条数据
+#
+只显示第 `32` 和 `33` 条数据
 SELECT
     employee_id,
     last_name
     FROM
-        employees
-    LIMIT 31,2;
+        employees limit 31,2;
 
 /*
 ## 8.0 新特性
@@ -75,10 +78,11 @@ SELECT
     employee_id,
     last_name
     FROM
-        employees
-    LIMIT 2 OFFSET 31;
+        employees limit 2
+    OFFSET 31;
 
-# 查询员工中工资最高的员工信息
+#
+查询员工中工资最高的员工信息
 SELECT
     employee_id,
     last_name,
@@ -86,5 +90,4 @@ SELECT
     FROM
         employees
     ORDER BY
-        salary DESC
-    LIMIT 1;
+        salary DESC LIMIT 1;

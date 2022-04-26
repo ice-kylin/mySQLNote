@@ -9,7 +9,9 @@
   - 则尽量使用 `UNION ALL` 语句，以提高数据查询的效率
  */
 
-# 中图：内连接
+#
+中图
+：内连接
 SELECT
     e.employee_id,
     d.department_name
@@ -17,7 +19,9 @@ SELECT
         employees e
             JOIN departments d ON e.department_id = d.department_id;
 
-# 左图：左外连接
+#
+左图
+：左外连接
 SELECT
     e.employee_id,
     d.department_name
@@ -25,7 +29,9 @@ SELECT
         employees e
             LEFT JOIN departments d ON e.department_id = d.department_id;
 
-# 右上图：右外连接
+#
+右上图
+：右外连接
 SELECT
     e.employee_id,
     d.department_name
@@ -33,7 +39,9 @@ SELECT
         employees e
             RIGHT JOIN departments d ON d.department_id = e.department_id;
 
-# 左中图：
+#
+左中图
+：
 SELECT
     e.employee_id,
     d.department_name,
@@ -45,7 +53,8 @@ SELECT
     WHERE
         d.department_id IS NULL;
 
-# 右中图
+#
+右中图
 SELECT
     employee_id,
     department_name
@@ -55,8 +64,11 @@ SELECT
     WHERE
         e.department_id IS NULL;
 
-# 左下图：满外连接
-# 方式 1：左上图 UNION ALL 右中图
+#
+左下图
+：满外连接
+# 方式 1
+：左上图 UNION ALL 右中图
 SELECT
     e.employee_id,
     d.department_name
@@ -73,7 +85,9 @@ SELECT
     WHERE
         e.department_id IS NULL;
 
-# 方式二：左中图 UNION ALL 右上图
+#
+方式二
+：左中图 UNION ALL 右上图
 SELECT
     e.employee_id,
     d.department_name

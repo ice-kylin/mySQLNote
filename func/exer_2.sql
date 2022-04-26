@@ -30,7 +30,7 @@ SELECT
 # 4. 选择具有各个 job_id 的员工人数
 SELECT
     job_id,
-    COUNT(*) "num_of_workers"
+    COUNT(*) AS "num_of_workers"
     FROM
         employees
     GROUP BY
@@ -38,7 +38,7 @@ SELECT
 
 # 5. 查询员工最高工资和最低工资的差距（DIFFERENCE）
 SELECT
-    MAX(salary) - MIN(salary) "difference"
+    MAX(salary) - MIN(salary) AS "difference"
     FROM
         employees;
 
@@ -61,7 +61,7 @@ SELECT
     d.department_name,
     d.location_id,
     COUNT(e.employee_id),
-    AVG(IFNULL(e.salary, 0)) "avg_salary"
+    AVG(IFNULL(e.salary, 0)) AS "avg_salary"
     FROM
         employees e
             RIGHT JOIN departments d ON e.department_id = d.department_id

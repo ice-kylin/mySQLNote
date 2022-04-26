@@ -45,7 +45,7 @@ SELECT
     100 / 2,
     100 + 2 * 5 / 2,
     100 / 3,
-    100 DIV 0
+    100 AS div 0
     FROM
         dual;
 
@@ -63,7 +63,8 @@ SELECT
     FROM
         dual;
 
-# 查询员工 id 为偶数的员工信息
+#
+查询员工 id 为偶数的员工信息
 SELECT *
     FROM
         employees

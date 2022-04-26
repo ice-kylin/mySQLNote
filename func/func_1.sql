@@ -6,101 +6,109 @@
 
 ## 数值函数
  */
-# 基本操作
+#
+基本操作
 SELECT
-    ABS(-123),
-    ABS(32),
-    SIGN(-23),
-    SIGN(43),
-    PI(),
-    CEIL(32.2),
-    CEILING(-33.1),
-    FLOOR(32.32),
-    FLOOR(-43.23),
-    MOD(12, 5),
-    12 MOD 5,
-    12 % 5
+    abs(-123),
+    abs(32),
+    sign(-23),
+    sign(43),
+    pi(),
+    ceil(32.2),
+    ceiling(-33.1),
+    floor(32.32),
+    floor(-43.23),
+    mod(12, 5),
+    12 AS mod 5, 12 % 5
     FROM
         dual;
 
-# 取随机数
+#
+取随机数
 SELECT
-    RAND(),
-    RAND(),
-    RAND(10),
-    RAND(10),
-    RAND(-1),
-    RAND(-1)
+    rand(),
+    rand(),
+    rand(10),
+    rand(10),
+    rand(-1),
+    rand(-1)
     FROM
         dual;
 
-# 四舍五入
+#
+四舍五入
 SELECT
-    ROUND(123.456),
-    ROUND(123.456, 0),
-    ROUND(123.456, 1),
-    ROUND(123.456, 2),
-    ROUND(123.456, -1),
-    ROUND(153.456, -2)
+    round(123.456),
+    round(123.456, 0),
+    round(123.456, 1),
+    round(123.456, 2),
+    round(123.456, -1),
+    round(153.456, -2)
     FROM
         dual;
 
-# 截断操作
+#
+截断操作
 SELECT
-    TRUNCATE(123.456, 0),
-    TRUNCATE(123.496, 1),
-    TRUNCATE(129.45, -1)
+    truncate(123.456, 0),
+    truncate(123.496, 1),
+    truncate(129.45, -1)
     FROM
         dual;
 
-# 开方
+#
+开方
 SELECT
-    SQRT(4)
+    sqrt(4)
     FROM
         dual;
 
-# 角度与弧度的互换
+#
+角度与弧度的互换
 SELECT
-    RADIANS(180),
-    RADIANS(90),
-    RADIANS(360),
-    DEGREES(2 * PI()),
-    DEGREES(PI()),
-    DEGREES(PI() / 2)
+    radians(180),
+    radians(90),
+    radians(360),
+    degrees(2 * pi()),
+    degrees(pi()),
+    degrees(pi() / 2)
     FROM
         dual;
 
-# 三角函数
+#
+三角函数
 SELECT
-    SIN(RADIANS(30)),
-    DEGREES(ASIN(SIN(RADIANS(30)))),
-    SIN(RADIANS(60))
+    sin(radians(30)),
+    degrees(asin(sin(radians(30)))),
+    sin(radians(60))
     FROM
         dual;
 
-# 指数和对数
+#
+指数和对数
 SELECT
-    POW(2, 2),
-    POW(2, 4),
-    EXP(1),
-    EXP(2)
+    pow(2, 2),
+    pow(2, 4),
+    exp(1),
+    exp(2)
     FROM
         dual;
 
 SELECT
-    LN(EXP(2)),
-    LOG(EXP(2)),
-    LOG10(10),
-    LOG2(2)
+    ln(exp(2)),
+    log(exp(2)),
+    log10(10),
+    log2(2)
     FROM
         dual;
 
-# 进制间的转换
+#
+进制间的转换
 SELECT
-    BIN(10),
-    HEX(10),
-    OCT(10),
-    CONV(10, 2, 10)
+    bin(10),
+    hex(10),
+    oct(10),
+    conv(10, 2, 10)
     FROM
         dual;
 
@@ -108,30 +116,57 @@ SELECT
 ## 字符串函数
  */
 SELECT
-    ASCII('abc'),
-    ASCII('A'),
+    ascii('abc'),
+    ascii('A'),
     CHAR_LENGTH('hello'),
     CHAR_LENGTH('好耶'),
-    LENGTH('hello'),
-    LENGTH('好耶')
+    length('hello'),
+    length('好耶')
     FROM
         dual;
 
 SELECT
-    CONCAT(e.last_name, ' worked for ', IFNULL(m.last_name, 'nobody'), '.') "work"
+    concat(e.last_name, ' worked for ', ifnull(m.last_name, 'nobody'), '.') AS "work"
     FROM
         employees e
             LEFT JOIN employees m ON e.manager_id = m.employee_id;
 
 SELECT
-    CONCAT_WS('-', 'hello', 'sql')
+    concat_ws('-', 'hello', 'sql')
     FROM
         dual;
 
 SELECT
-    INSERT('helloworld', 2, 3, 'aaaaa'),
-    INSERT('hellosql', 6, 7, 'World'),
-    REPLACE('hello', 'll', 'mmm')
+INSERT
+(
+'helloworld'
+,
+2
+,
+3
+,
+'aaaaa'
+)
+,
+INSERT
+(
+'hellosql'
+,
+6
+,
+7
+,
+'World'
+)
+,
+REPLACE
+(
+'hello'
+,
+'ll'
+,
+'mmm'
+)
     FROM
         dual;
 
@@ -142,8 +177,10 @@ SELECT
         dual;
 
 SELECT
-    LEFT('Hello', 2),
-    RIGHT('Hello', 3)
+    LEFT (
+    'Hello', 2),
+    RIGHT (
+    'Hello', 3)
     FROM
         dual;
 
@@ -154,58 +191,58 @@ SELECT
 SELECT
     employee_id,
     last_name,
-    LPAD(salary, 10, '*'),
-    LPAD(salary, 10, ' ')
+    lpad(salary, 10, '*'),
+    lpad(salary, 10, ' ')
     FROM
         employees;
 
 SELECT
-    CONCAT('*', TRIM('  Hello  '), '*'),
-    CONCAT('*', RTRIM('  Hello  '), '*'),
-    CONCAT('*', LTRIM('  Hello  '), '*'),
-    CONCAT('*', TRIM('a' FROM 'aaaHelloaaa'), '*'),
-    CONCAT('*', TRIM(LEADING 'a' FROM 'aaaHelloaaa'), '*'),
-    CONCAT('*', TRIM(TRAILING 'a' FROM 'aaaHelloaaa'), '*')
+    concat('*', TRIM('  Hello  '), '*'),
+    concat('*', rtrim('  Hello  '), '*'),
+    concat('*', ltrim('  Hello  '), '*'),
+    concat('*', TRIM('a' FROM 'aaaHelloaaa'), '*'),
+    concat('*', TRIM(LEADING 'a' FROM 'aaaHelloaaa'), '*'),
+    concat('*', TRIM(TRAILING 'a' FROM 'aaaHelloaaa'), '*')
     FROM
         dual;
 
 SELECT
-    REPEAT('Hello', 3),
-    LENGTH(SPACE(5)),
-    CONCAT('*', SPACE(5), '*')
+    repeat('Hello', 3),
+    length(SPACE(5)),
+    concat('*', SPACE(5), '*')
     FROM
         dual;
 
 SELECT
-    STRCMP('abc', 'abd')
+    strcmp('abc', 'abd')
     FROM
         dual;
 
 SELECT
-    SUBSTR('Hello', 2, 2),
-    LOCATE('ll', 'Hello'),
-    LOCATE('lll', 'Hello')
+    substr('Hello', 2, 2),
+    locate('ll', 'Hello'),
+    locate('lll', 'Hello')
     FROM
         dual;
 
 SELECT
-    ELT(2, 'a', 'b', 'c', 'd'),
-    FIELD('mm', 'gg', 'jj', 'mm', 'dd', 'mm')
+    elt(2, 'a', 'b', 'c', 'd'),
+    field('mm', 'gg', 'jj', 'mm', 'dd', 'mm')
     FROM
         dual;
 
 SELECT
-    FIND_IN_SET('mm', 'gg,jj,mm,dd,mm')
+    find_in_set('mm', 'gg,jj,mm,dd,mm')
     FROM
         dual;
 
 SELECT
-    REVERSE('Hello')
+    reverse('Hello')
     FROM
         dual;
 
 SELECT
     employee_id,
-    NULLIF(LENGTH(first_name), LENGTH(last_name))
+    NULLIF(length(first_name), length(last_name))
     FROM
         employees;

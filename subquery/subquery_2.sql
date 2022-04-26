@@ -164,6 +164,6 @@ SELECT
                             FROM
                                 departments
                             WHERE
-                                location_id = 1800), 'Canada', 'USA') "location"
+                                location_id = 1800), 'Canada', 'USA') AS "location"
     FROM
         employees;

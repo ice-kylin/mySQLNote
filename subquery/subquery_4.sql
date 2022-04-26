@@ -38,8 +38,8 @@ SELECT
     FROM
         employees e1,
         (SELECT
-             e2.department_id di,
-             AVG(e2.salary)   avg
+             e2.department_id AS di,
+             AVG(e2.salary)   AS avg
              FROM
                  employees e2
              GROUP BY

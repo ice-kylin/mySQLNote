@@ -27,7 +27,9 @@ SELECT
 /*
 ## 自连接 vs 非自连接
  */
-# 查询员工 id，员工姓名以及管理者 id 和姓名
+#
+查询员工 id
+，员工姓名以及管理者 id 和姓名
 SELECT
     e.employee_id,
     e.last_name,
@@ -63,8 +65,10 @@ SELECT
 /*
 ### SQL99 语法实现外连接
  */
-# 左外连接
-# 查询所有员工的 `last_name`、`department_name` 信息
+#
+左外连接
+# 查询所有员工的 `last_name`
+、`department_name` 信息
 SELECT
     e.last_name,
     d.department_name
@@ -72,7 +76,8 @@ SELECT
         employees e
             LEFT JOIN departments d ON e.department_id = d.department_id;
 
-# 右外连接
+#
+右外连接
 SELECT
     last_name,
     department_name
