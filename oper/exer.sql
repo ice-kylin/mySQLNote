@@ -115,7 +115,8 @@ SELECT
 
 #
 9. 显示出表 employees 的 manager_id 是 100
-、101、110 的员工姓名
+、101
+、110 的员工姓名
 、工资
 、管理者 id
 SELECT

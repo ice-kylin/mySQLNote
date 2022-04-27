@@ -25,9 +25,9 @@ DROP TABLE if EXISTS `countries`;
 
 CREATE TABLE `countries`
 (
-    `country_id`   char(2) NOT NULL,
-    `country_name` varchar(40) DEFAULT NULL,
-    `region_id`    int(11) DEFAULT NULL,
+    `country_id`   CHAR(2) NOT NULL,
+    `country_name` VARCHAR(40) DEFAULT NULL,
+    `region_id`    INT(11) DEFAULT NULL,
     PRIMARY KEY (`country_id`),
     key            `countr_reg_fk` (`region_id`),
     CONSTRAINT `countr_reg_fk` FOREIGN KEY (`region_id`) REFERENCES `regions` (`region_id`)
@@ -71,10 +71,10 @@ DROP TABLE if EXISTS `departments`;
 
 CREATE TABLE `departments`
 (
-    `department_id`   int(4) NOT NULL DEFAULT '0',
-    `department_name` varchar(30) NOT NULL,
-    `manager_id`      int(6) DEFAULT NULL,
-    `location_id`     int(4) DEFAULT NULL,
+    `department_id`   INT(4) NOT NULL DEFAULT '0',
+    `department_name` VARCHAR(30) NOT NULL,
+    `manager_id`      INT(6) DEFAULT NULL,
+    `location_id`     INT(4) DEFAULT NULL,
     PRIMARY KEY (`department_id`),
     UNIQUE KEY `dept_id_pk` (`department_id`),
     key               `dept_loc_fk` (`location_id`),
@@ -123,14 +123,14 @@ DROP TABLE if EXISTS `employees`;
 
 CREATE TABLE `employees`
 (
-    `employee_id`  int(6) NOT NULL DEFAULT '0',
-    `first_name`   varchar(20) DEFAULT NULL,
-    `last_name`    varchar(25) NOT NULL,
-    `email`        varchar(25) NOT NULL,
-    `phone_number` varchar(20) DEFAULT NULL,
-    `hire_date`    date        NOT NULL,
-    `job_id`       varchar(10) NOT NULL,
-    `salary`       double(8, 2
+    `employee_id`  INT(6) NOT NULL DEFAULT '0',
+    `first_name`   VARCHAR(20) DEFAULT NULL,
+    `last_name`    VARCHAR(25) NOT NULL,
+    `email`        VARCHAR(25) NOT NULL,
+    `phone_number` VARCHAR(20) DEFAULT NULL,
+    `hire_date`    DATE        NOT NULL,
+    `job_id`       VARCHAR(10) NOT NULL,
+    `salary`       DOUBLE(8, 2
 ) DEFAULT NULL,
     `commission_pct` DOUBLE(2, 2)         DEFAULT NULL,
     `manager_id`     INT(6)               DEFAULT NULL,
@@ -268,9 +268,9 @@ DROP TABLE if EXISTS `job_grades`;
 
 CREATE TABLE `job_grades`
 (
-    `grade_level` varchar(3) DEFAULT NULL,
-    `lowest_sal`  int(11) DEFAULT NULL,
-    `highest_sal` int(11) DEFAULT NULL
+    `grade_level` VARCHAR(3) DEFAULT NULL,
+    `lowest_sal`  INT(11) DEFAULT NULL,
+    `highest_sal` INT(11) DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -292,11 +292,11 @@ DROP TABLE if EXISTS `job_history`;
 
 CREATE TABLE `job_history`
 (
-    `employee_id`   int(6) NOT NULL,
-    `start_date`    date        NOT NULL,
-    `end_date`      date        NOT NULL,
-    `job_id`        varchar(10) NOT NULL,
-    `department_id` int(4) DEFAULT NULL,
+    `employee_id`   INT(6) NOT NULL,
+    `start_date`    DATE        NOT NULL,
+    `end_date`      DATE        NOT NULL,
+    `job_id`        VARCHAR(10) NOT NULL,
+    `department_id` INT(4) DEFAULT NULL,
     PRIMARY KEY (`employee_id`, `start_date`),
     UNIQUE KEY `jhist_emp_id_st_date_pk` (`employee_id`, `start_date`),
     key             `jhist_job_fk` (`job_id`),
@@ -329,10 +329,10 @@ DROP TABLE if EXISTS `jobs`;
 
 CREATE TABLE `jobs`
 (
-    `job_id`     varchar(10) NOT NULL DEFAULT '',
-    `job_title`  varchar(35) NOT NULL,
-    `min_salary` int(6) DEFAULT NULL,
-    `max_salary` int(6) DEFAULT NULL,
+    `job_id`     VARCHAR(10) NOT NULL DEFAULT '',
+    `job_title`  VARCHAR(35) NOT NULL,
+    `min_salary` INT(6) DEFAULT NULL,
+    `max_salary` INT(6) DEFAULT NULL,
     PRIMARY KEY (`job_id`),
     UNIQUE KEY `job_id_pk` (`job_id`)
 ) ENGINE = InnoDB
@@ -369,12 +369,12 @@ DROP TABLE if EXISTS `locations`;
 
 CREATE TABLE `locations`
 (
-    `location_id`    int(4) NOT NULL DEFAULT '0',
-    `street_address` varchar(40) DEFAULT NULL,
-    `postal_code`    varchar(12) DEFAULT NULL,
-    `city`           varchar(30) NOT NULL,
-    `state_province` varchar(25) DEFAULT NULL,
-    `country_id`     char(2)     DEFAULT NULL,
+    `location_id`    INT(4) NOT NULL DEFAULT '0',
+    `street_address` VARCHAR(40) DEFAULT NULL,
+    `postal_code`    VARCHAR(12) DEFAULT NULL,
+    `city`           VARCHAR(30) NOT NULL,
+    `state_province` VARCHAR(25) DEFAULT NULL,
+    `country_id`     CHAR(2)     DEFAULT NULL,
     PRIMARY KEY (`location_id`),
     UNIQUE KEY `loc_id_pk` (`location_id`),
     key              `loc_c_id_fk` (`country_id`),
@@ -417,8 +417,8 @@ DROP TABLE if EXISTS `order`;
 
 CREATE TABLE `order`
 (
-    `order_id`   int(11) DEFAULT NULL,
-    `order_name` varchar(15) DEFAULT NULL
+    `order_id`   INT(11) DEFAULT NULL,
+    `order_name` VARCHAR(15) DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -437,8 +437,8 @@ DROP TABLE if EXISTS `regions`;
 
 CREATE TABLE `regions`
 (
-    `region_id`   int(11) NOT NULL,
-    `region_name` varchar(25) DEFAULT NULL,
+    `region_id`   INT(11) NOT NULL,
+    `region_name` VARCHAR(25) DEFAULT NULL,
     PRIMARY KEY (`region_id`),
     UNIQUE KEY `reg_id_pk` (`region_id`)
 ) ENGINE = InnoDB

@@ -137,7 +137,8 @@ SELECT
  */
 #
 查询部门为 10
-、20、30 部门的员工信息
+、20
+、30 部门的员工信息
 SELECT
     employee_id,
     last_name,
@@ -149,7 +150,8 @@ SELECT
 
 #
 查询部门为 10
-、20、30 部门的员工信息
+、20
+、30 部门的员工信息
 SELECT
     employee_id,
     last_name,
@@ -163,7 +165,8 @@ SELECT
 
 #
 查询工资不是 6000
-、7000、8000 的员工信息
+、7000
+、8000 的员工信息
 SELECT
     employee_id,
     last_name,

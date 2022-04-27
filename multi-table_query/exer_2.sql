@@ -1,8 +1,8 @@
 CREATE TABLE `t_dept`
 (
-    `id`       int(11) NOT NULL AUTO_INCREMENT,
-    `deptname` varchar(30) DEFAULT NULL,
-    `address`  varchar(40) DEFAULT NULL,
+    `id`       INT(11) NOT NULL AUTO_INCREMENT,
+    `deptname` VARCHAR(30) DEFAULT NULL,
+    `address`  VARCHAR(40) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = INNODB
   AUTO_INCREMENT = 1
@@ -10,11 +10,11 @@ CREATE TABLE `t_dept`
 
 CREATE TABLE `t_emp`
 (
-    `id`     int(11) NOT NULL AUTO_INCREMENT,
-    `name`   varchar(20) DEFAULT NULL,
-    `age`    int(3) DEFAULT NULL,
-    `deptid` int(11) DEFAULT NULL,
-    empno    int NOT NULL,
+    `id`     INT(11) NOT NULL AUTO_INCREMENT,
+    `name`   VARCHAR(20) DEFAULT NULL,
+    `age`    INT(3) DEFAULT NULL,
+    `deptid` INT(11) DEFAULT NULL,
+    empno    INT NOT NULL,
     PRIMARY KEY (`id`),
     key      `idx_dept_id` (`deptid`)
         #CONSTRAINT `fk_dept_id` FOREIGN KEY (`deptId`) REFERENCES `t_dept` (`id`)
