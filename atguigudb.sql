@@ -9,27 +9,27 @@ MySQL - 5.7.28-log : Database - atguigudb
 
 /*!40101 SET SQL_MODE = ''*/;
 
-/*!40014 SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0 */;
-/*!40101 SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES = @@SQL_NOTES, SQL_NOTES = 0 */;
+/*!40014 SET @old_unique_checks = @@unique_checks, UNIQUE_CHECKS = 0 */;
+/*!40014 SET @old_foreign_key_checks = @@foreign_key_checks, FOREIGN_KEY_CHECKS = 0 */;
+/*!40101 SET @old_sql_mode = @@sql_mode, SQL_MODE = 'NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @old_sql_notes = @@sql_notes, SQL_NOTES = 0 */;
 CREATE
-DATABASE /*!32312 IF NOT EXISTS */`atguigudb` /*!40100 DEFAULT CHARACTER SET utf8 */;
+    DATABASE /*!32312 IF NOT EXISTS */`atguigudb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE
-`atguigudb`;
+    `atguigudb`;
 
 /*Table structure for table `countries` */
 
-DROP TABLE if EXISTS `countries`;
+DROP TABLE IF EXISTS `countries`;
 
 CREATE TABLE `countries`
 (
     `country_id`   CHAR(2) NOT NULL,
     `country_name` VARCHAR(40) DEFAULT NULL,
-    `region_id`    INT(11) DEFAULT NULL,
+    `region_id`    INT(11)     DEFAULT NULL,
     PRIMARY KEY (`country_id`),
-    key            `countr_reg_fk` (`region_id`),
+    KEY `countr_reg_fk` (`region_id`),
     CONSTRAINT `countr_reg_fk` FOREIGN KEY (`region_id`) REFERENCES `regions` (`region_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -67,18 +67,18 @@ INSERT INTO
 
 /*Table structure for table `departments` */
 
-DROP TABLE if EXISTS `departments`;
+DROP TABLE IF EXISTS `departments`;
 
 CREATE TABLE `departments`
 (
-    `department_id`   INT(4) NOT NULL DEFAULT '0',
+    `department_id`   INT(4)      NOT NULL DEFAULT '0',
     `department_name` VARCHAR(30) NOT NULL,
-    `manager_id`      INT(6) DEFAULT NULL,
-    `location_id`     INT(4) DEFAULT NULL,
+    `manager_id`      INT(6)               DEFAULT NULL,
+    `location_id`     INT(4)               DEFAULT NULL,
     PRIMARY KEY (`department_id`),
     UNIQUE KEY `dept_id_pk` (`department_id`),
-    key               `dept_loc_fk` (`location_id`),
-    key               `dept_mgr_fk` (`manager_id`),
+    KEY `dept_loc_fk` (`location_id`),
+    KEY `dept_mgr_fk` (`manager_id`),
     CONSTRAINT `dept_loc_fk` FOREIGN KEY (`location_id`) REFERENCES `locations` (`location_id`),
     CONSTRAINT `dept_mgr_fk` FOREIGN KEY (`manager_id`) REFERENCES `employees` (`employee_id`)
 ) ENGINE = InnoDB
@@ -119,19 +119,18 @@ INSERT INTO
 
 /*Table structure for table `employees` */
 
-DROP TABLE if EXISTS `employees`;
+DROP TABLE IF EXISTS `employees`;
 
 CREATE TABLE `employees`
 (
-    `employee_id`  INT(6) NOT NULL DEFAULT '0',
-    `first_name`   VARCHAR(20) DEFAULT NULL,
-    `last_name`    VARCHAR(25) NOT NULL,
-    `email`        VARCHAR(25) NOT NULL,
-    `phone_number` VARCHAR(20) DEFAULT NULL,
-    `hire_date`    DATE        NOT NULL,
-    `job_id`       VARCHAR(10) NOT NULL,
-    `salary`       DOUBLE(8, 2
-) DEFAULT NULL,
+    `employee_id`    INT(6)      NOT NULL DEFAULT '0',
+    `first_name`     VARCHAR(20)          DEFAULT NULL,
+    `last_name`      VARCHAR(25) NOT NULL,
+    `email`          VARCHAR(25) NOT NULL,
+    `phone_number`   VARCHAR(20)          DEFAULT NULL,
+    `hire_date`      DATE        NOT NULL,
+    `job_id`         VARCHAR(10) NOT NULL,
+    `salary`         DOUBLE(8, 2)         DEFAULT NULL,
     `commission_pct` DOUBLE(2, 2)         DEFAULT NULL,
     `manager_id`     INT(6)               DEFAULT NULL,
     `department_id`  INT(4)               DEFAULT NULL,
@@ -264,13 +263,13 @@ INSERT INTO
 
 /*Table structure for table `job_grades` */
 
-DROP TABLE if EXISTS `job_grades`;
+DROP TABLE IF EXISTS `job_grades`;
 
 CREATE TABLE `job_grades`
 (
     `grade_level` VARCHAR(3) DEFAULT NULL,
-    `lowest_sal`  INT(11) DEFAULT NULL,
-    `highest_sal` INT(11) DEFAULT NULL
+    `lowest_sal`  INT(11)    DEFAULT NULL,
+    `highest_sal` INT(11)    DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
 
@@ -288,19 +287,19 @@ INSERT INTO
 
 /*Table structure for table `job_history` */
 
-DROP TABLE if EXISTS `job_history`;
+DROP TABLE IF EXISTS `job_history`;
 
 CREATE TABLE `job_history`
 (
-    `employee_id`   INT(6) NOT NULL,
+    `employee_id`   INT(6)      NOT NULL,
     `start_date`    DATE        NOT NULL,
     `end_date`      DATE        NOT NULL,
     `job_id`        VARCHAR(10) NOT NULL,
     `department_id` INT(4) DEFAULT NULL,
     PRIMARY KEY (`employee_id`, `start_date`),
     UNIQUE KEY `jhist_emp_id_st_date_pk` (`employee_id`, `start_date`),
-    key             `jhist_job_fk` (`job_id`),
-    key             `jhist_dept_fk` (`department_id`),
+    KEY `jhist_job_fk` (`job_id`),
+    KEY `jhist_dept_fk` (`department_id`),
     CONSTRAINT `jhist_dept_fk` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`),
     CONSTRAINT `jhist_emp_fk` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`),
     CONSTRAINT `jhist_job_fk` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`)
@@ -325,14 +324,14 @@ INSERT INTO
 
 /*Table structure for table `jobs` */
 
-DROP TABLE if EXISTS `jobs`;
+DROP TABLE IF EXISTS `jobs`;
 
 CREATE TABLE `jobs`
 (
     `job_id`     VARCHAR(10) NOT NULL DEFAULT '',
     `job_title`  VARCHAR(35) NOT NULL,
-    `min_salary` INT(6) DEFAULT NULL,
-    `max_salary` INT(6) DEFAULT NULL,
+    `min_salary` INT(6)               DEFAULT NULL,
+    `max_salary` INT(6)               DEFAULT NULL,
     PRIMARY KEY (`job_id`),
     UNIQUE KEY `job_id_pk` (`job_id`)
 ) ENGINE = InnoDB
@@ -365,19 +364,19 @@ INSERT INTO
 
 /*Table structure for table `locations` */
 
-DROP TABLE if EXISTS `locations`;
+DROP TABLE IF EXISTS `locations`;
 
 CREATE TABLE `locations`
 (
-    `location_id`    INT(4) NOT NULL DEFAULT '0',
-    `street_address` VARCHAR(40) DEFAULT NULL,
-    `postal_code`    VARCHAR(12) DEFAULT NULL,
+    `location_id`    INT(4)      NOT NULL DEFAULT '0',
+    `street_address` VARCHAR(40)          DEFAULT NULL,
+    `postal_code`    VARCHAR(12)          DEFAULT NULL,
     `city`           VARCHAR(30) NOT NULL,
-    `state_province` VARCHAR(25) DEFAULT NULL,
-    `country_id`     CHAR(2)     DEFAULT NULL,
+    `state_province` VARCHAR(25)          DEFAULT NULL,
+    `country_id`     CHAR(2)              DEFAULT NULL,
     PRIMARY KEY (`location_id`),
     UNIQUE KEY `loc_id_pk` (`location_id`),
-    key              `loc_c_id_fk` (`country_id`),
+    KEY `loc_c_id_fk` (`country_id`),
     CONSTRAINT `loc_c_id_fk` FOREIGN KEY (`country_id`) REFERENCES `countries` (`country_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -413,11 +412,11 @@ INSERT INTO
 
 /*Table structure for table `order` */
 
-DROP TABLE if EXISTS `order`;
+DROP TABLE IF EXISTS `order`;
 
 CREATE TABLE `order`
 (
-    `order_id`   INT(11) DEFAULT NULL,
+    `order_id`   INT(11)     DEFAULT NULL,
     `order_name` VARCHAR(15) DEFAULT NULL
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -433,7 +432,7 @@ INSERT INTO
 
 /*Table structure for table `regions` */
 
-DROP TABLE if EXISTS `regions`;
+DROP TABLE IF EXISTS `regions`;
 
 CREATE TABLE `regions`
 (
@@ -456,29 +455,29 @@ INSERT INTO
 
 /*Table structure for table `emp_details_view` */
 
-DROP TABLE if EXISTS `emp_details_view`;
+DROP TABLE IF EXISTS `emp_details_view`;
 
 /*!50001 DROP VIEW IF EXISTS `emp_details_view` */;
 /*!50001 DROP TABLE IF EXISTS `emp_details_view` */;
 
 /*!50001 CREATE TABLE `emp_details_view`
 (
-    `employee_id`     int(6),
-    `job_id`          varchar(10),
-    `manager_id`      int(6),
-    `department_id`   int(4),
-    `location_id`     int(4),
-    `country_id`      char(2),
-    `first_name`      varchar(20),
-    `last_name`       varchar(25),
-    `salary`          double(8, 2),
-    `commission_pct`  double(2, 2),
-    `department_name` varchar(30),
-    `job_title`       varchar(35),
-    `city`            varchar(30),
-    `state_province`  varchar(25),
-    `country_name`    varchar(40),
-    `region_name`     varchar(25)
+    `employee_id`     INT(6),
+    `job_id`          VARCHAR(10),
+    `manager_id`      INT(6),
+    `department_id`   INT(4),
+    `location_id`     INT(4),
+    `country_id`      CHAR(2),
+    `first_name`      VARCHAR(20),
+    `last_name`       VARCHAR(25),
+    `salary`          DOUBLE(8, 2),
+    `commission_pct`  DOUBLE(2, 2),
+    `department_name` VARCHAR(30),
+    `job_title`       VARCHAR(35),
+    `city`            VARCHAR(30),
+    `state_province`  VARCHAR(25),
+    `country_name`    VARCHAR(40),
+    `region_name`     VARCHAR(25)
 )*/;
 
 /*View structure for view emp_details_view */
@@ -487,29 +486,33 @@ DROP TABLE if EXISTS `emp_details_view`;
 /*!50001 DROP VIEW IF EXISTS `emp_details_view` */;
 
 /*!50001 CREATE ALGORITHM = UNDEFINED DEFINER =`root`@`localhost` SQL SECURITY DEFINER VIEW `emp_details_view` AS
-select `e`.`employee_id`     AS `employee_id`,
-       `e`.`job_id`          AS `job_id`,
-       `e`.`manager_id`      AS `manager_id`,
-       `e`.`department_id`   AS `department_id`,
-       `d`.`location_id`     AS `location_id`,
-       `l`.`country_id`      AS `country_id`,
-       `e`.`first_name`      AS `first_name`,
-       `e`.`last_name`       AS `last_name`,
-       `e`.`salary`          AS `salary`,
-       `e`.`commission_pct`  AS `commission_pct`,
-       `d`.`department_name` AS `department_name`,
-       `j`.`job_title`       AS `job_title`,
-       `l`.`city`            AS `city`,
-       `l`.`state_province`  AS `state_province`,
-       `c`.`country_name`    AS `country_name`,
-       `r`.`region_name`     AS `region_name`
-from (((((`employees` `e` join `departments` `d`) join `jobs` `j`) join `locations` `l`) join `countries` `c`)
-         join `regions` `r`)
-where ((`e`.`department_id` = `d`.`department_id`) and (`d`.`location_id` = `l`.`location_id`) and
-       (`l`.`country_id` = `c`.`country_id`) and (`c`.`region_id` = `r`.`region_id`) and (`j`.`job_id` = `e`.`job_id`))
+SELECT
+    `e`.`employee_id`     AS `employee_id`,
+    `e`.`job_id`          AS `job_id`,
+    `e`.`manager_id`      AS `manager_id`,
+    `e`.`department_id`   AS `department_id`,
+    `d`.`location_id`     AS `location_id`,
+    `l`.`country_id`      AS `country_id`,
+    `e`.`first_name`      AS `first_name`,
+    `e`.`last_name`       AS `last_name`,
+    `e`.`salary`          AS `salary`,
+    `e`.`commission_pct`  AS `commission_pct`,
+    `d`.`department_name` AS `department_name`,
+    `j`.`job_title`       AS `job_title`,
+    `l`.`city`            AS `city`,
+    `l`.`state_province`  AS `state_province`,
+    `c`.`country_name`    AS `country_name`,
+    `r`.`region_name`     AS `region_name`
+    FROM
+        (((((`employees` `e` JOIN `departments` `d`) JOIN `jobs` `j`) JOIN `locations` `l`) JOIN `countries` `c`)
+            JOIN `regions` `r`)
+    WHERE
+        ((`e`.`department_id` = `d`.`department_id`) AND (`d`.`location_id` = `l`.`location_id`) AND
+         (`l`.`country_id` = `c`.`country_id`) AND (`c`.`region_id` = `r`.`region_id`) AND
+         (`j`.`job_id` = `e`.`job_id`))
         */;
 
-/*!40101 SET SQL_MODE = @OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS */;
-/*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE = @old_sql_mode */;
+/*!40014 SET FOREIGN_KEY_CHECKS = @old_foreign_key_checks */;
+/*!40014 SET UNIQUE_CHECKS = @old_unique_checks */;
+/*!40111 SET SQL_NOTES = @old_sql_notes */;
