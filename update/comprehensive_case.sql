@@ -192,11 +192,17 @@ SELECT
     `name`,
     note,
     CASE note
-        WHEN 'novel' THEN '小说'
-        WHEN 'law' THEN '法律'
-        WHEN 'medicine' THEN '医药'
-        WHEN 'cartoon' THEN '卡通'
-        WHEN 'joke' THEN '笑话' END AS type
+        WHEN 'novel'
+            THEN '小说'
+        WHEN 'law'
+            THEN '法律'
+        WHEN 'medicine'
+            THEN '医药'
+        WHEN 'cartoon'
+            THEN '卡通'
+        WHEN 'joke'
+            THEN '笑话'
+    END AS type
     FROM
         books;
 
@@ -205,10 +211,14 @@ SELECT
     `name`,
     num,
     CASE
-        WHEN num > 30 THEN '滞销'
-        WHEN num > 0 AND num < 10 THEN '畅销'
-        WHEN num = 0 THEN '无货'
-        ELSE '正常' END AS sales
+        WHEN num > 30
+            THEN '滞销'
+        WHEN num > 0 AND num < 10
+            THEN '畅销'
+        WHEN num = 0
+            THEN '无货'
+            ELSE '正常'
+    END AS sales
     FROM
         books;
 

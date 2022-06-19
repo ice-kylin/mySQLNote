@@ -11,23 +11,26 @@ BEGIN
     DECLARE i1 INT DEFAULT 2;
 
     CASE i1
-        WHEN 1 THEN SELECT
-                        'i1 = 1'
-                        FROM
-                            dual;
-        WHEN 2 THEN SELECT
-                        'i1 = 2'
-                        FROM
-                            dual;
-        WHEN 3 THEN SELECT
-                        'i1 = 3'
-                        FROM
-                            dual;
-        ELSE SELECT
-                 'other values'
-                 FROM
-                     dual;
-        END CASE;
+        WHEN 1
+            THEN SELECT
+                     'i1 = 1'
+                     FROM
+                         dual;
+        WHEN 2
+            THEN SELECT
+                     'i1 = 2'
+                     FROM
+                         dual;
+        WHEN 3
+            THEN SELECT
+                     'i1 = 3'
+                     FROM
+                         dual;
+            ELSE SELECT
+                     'other values'
+                     FROM
+                         dual;
+    END CASE;
 END //
 
 DELIMITER ;
@@ -42,23 +45,26 @@ BEGIN
     DECLARE i1 INT DEFAULT 10;
 
     CASE
-        WHEN i1 >= 100 AND i1 < 1000 THEN SELECT
-                                              '三位数'
-                                              FROM
-                                                  dual;
-        WHEN i1 >= 10 THEN SELECT
-                               '两位数'
-                               FROM
-                                   dual;
-        WHEN i1 >= 1 THEN SELECT
-                              '个位数'
-                              FROM
-                                  dual;
-        ELSE SELECT
-                 '其它位数'
-                 FROM
-                     dual;
-        END CASE;
+        WHEN i1 >= 100 AND i1 < 1000
+            THEN SELECT
+                     '三位数'
+                     FROM
+                         dual;
+        WHEN i1 >= 10
+            THEN SELECT
+                     '两位数'
+                     FROM
+                         dual;
+        WHEN i1 >= 1
+            THEN SELECT
+                     '个位数'
+                     FROM
+                         dual;
+            ELSE SELECT
+                     '其它位数'
+                     FROM
+                         dual;
+    END CASE;
 END //
 
 DELIMITER ;
@@ -88,22 +94,24 @@ BEGIN
             employee_id = emp_id;
 
     CASE
-        WHEN e_sal < 9000 THEN UPDATE employees
-                               SET
-                                   salary = 9000
-                                   WHERE
-                                       employee_id = emp_id;
-        WHEN e_sal < 10000 AND e_pct IS NULL THEN UPDATE employees
-                                                  SET
-                                                      commission_pct = 0.01
-                                                      WHERE
-                                                          employee_id = emp_id;
-        ELSE UPDATE employees
-             SET
-                 salary = salary + 100
-                 WHERE
-                     employee_id = emp_id;
-        END CASE;
+        WHEN e_sal < 9000
+            THEN UPDATE employees
+                 SET
+                     salary = 9000
+                     WHERE
+                         employee_id = emp_id;
+        WHEN e_sal < 10000 AND e_pct IS NULL
+            THEN UPDATE employees
+                 SET
+                     commission_pct = 0.01
+                     WHERE
+                         employee_id = emp_id;
+            ELSE UPDATE employees
+                 SET
+                     salary = salary + 100
+                     WHERE
+                         employee_id = emp_id;
+    END CASE;
 END //
 
 DELIMITER ;
@@ -137,37 +145,42 @@ BEGIN
             employee_id = emp_id;
 
     CASE e_years
-        WHEN 0 THEN SELECT
-                        50
-                        INTO e_sal
-                        FROM
-                            dual;
-        WHEN 1 THEN SELECT
-                        100
-                        INTO e_sal
-                        FROM
-                            dual;
-        WHEN 2 THEN SELECT
-                        200
-                        INTO e_sal
-                        FROM
-                            dual;
-        WHEN 3 THEN SELECT
-                        300
-                        INTO e_sal
-                        FROM
-                            dual;
-        WHEN 4 THEN SELECT
-                        400
-                        INTO e_sal
-                        FROM
-                            dual;
-        ELSE SELECT
-                 500
-                 INTO e_sal
-                 FROM
-                     dual;
-        END CASE;
+        WHEN 0
+            THEN SELECT
+                     50
+                     INTO e_sal
+                     FROM
+                         dual;
+        WHEN 1
+            THEN SELECT
+                     100
+                     INTO e_sal
+                     FROM
+                         dual;
+        WHEN 2
+            THEN SELECT
+                     200
+                     INTO e_sal
+                     FROM
+                         dual;
+        WHEN 3
+            THEN SELECT
+                     300
+                     INTO e_sal
+                     FROM
+                         dual;
+        WHEN 4
+            THEN SELECT
+                     400
+                     INTO e_sal
+                     FROM
+                         dual;
+            ELSE SELECT
+                     500
+                     INTO e_sal
+                     FROM
+                         dual;
+    END CASE;
 
     UPDATE employees
     SET
